@@ -1,0 +1,62 @@
+version: "3.5"
+networks:
+    default:
+        driver: bridge
+        name: rinha-nginx-2024q1
+
+services:
+#    api01: &api
+#        hostname: api01
+#        image: ffelipelimao/bank:latest
+#        volumes:
+#            - .:/app
+#        env_file:
+#            - .env
+#        ports:
+#            - "3001:3000"
+#        depends_on:
+#            - db
+#        deploy:
+#            resources:
+#                limits:
+#                    cpus: "0.55"
+#                    memory: "200MB"
+
+#    api02:
+#        <<: *api
+#        hostname: api02
+#        ports:
+#            - "3002:3000"
+#    nginx:
+#        image: nginx:latest
+#        volumes:
+#            - ./config/nginx.conf:/etc/nginx/nginx.conf:ro
+#        depends_on:
+#            - api01
+#            - api02
+#        ports:
+#            - "9999:9999"
+#        deploy:
+#            resources:
+#                limits:
+#                    cpus: "0.1"
+#                    memory: "30MB"
+#
+    db:
+        image: mysql:latest
+        hostname: db
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: bank
+            MYSQL_USER: user
+            MYSQL_PASSWORD: 123
+        ports:
+            - "3306:3306"
+        deploy:
+            resources:
+                limits:
+                    cpus: "0.7"
+                    memory: "0.8GB"
+        volumes:
+            - ./docker/script:/docker-entrypoint-initdb.d
+
