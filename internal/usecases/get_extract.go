@@ -4,7 +4,7 @@ import (
 	"context"
 	"time"
 
-	"github.com/ffelipelimao/bank/entities"
+	"github.com/ffelipelimao/bank/internal/entities"
 )
 
 type GetExtract struct {

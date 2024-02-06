@@ -4,7 +4,7 @@ import (
 	"context"
 	"errors"
 
-	"github.com/ffelipelimao/bank/entities"
+	"github.com/ffelipelimao/bank/internal/entities"
 )
 
 var ErrInsufficientFunds = errors.New("insufficient funds")

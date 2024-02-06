@@ -3,7 +3,7 @@ package usecases
 import (
 	"context"
 
-	"github.com/ffelipelimao/bank/entities"
+	"github.com/ffelipelimao/bank/internal/entities"
 )
 
 type TransferRepository interface {

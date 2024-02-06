@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/ffelipelimao/bank/entities"
+	"github.com/ffelipelimao/bank/internal/entities"
 	"github.com/gofiber/fiber/v2"
 )
 

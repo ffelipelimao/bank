@@ -1,10 +1,10 @@
 package main
 
 import (
-	"github.com/ffelipelimao/bank/controllers"
-	db "github.com/ffelipelimao/bank/database"
-	"github.com/ffelipelimao/bank/repository"
-	"github.com/ffelipelimao/bank/usecases"
+	"github.com/ffelipelimao/bank/internal/controllers"
+	db "github.com/ffelipelimao/bank/internal/database"
+	"github.com/ffelipelimao/bank/internal/repository"
+	"github.com/ffelipelimao/bank/internal/usecases"
 	"github.com/gofiber/fiber/v2"
 )
 

@@ -6,9 +6,8 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/ffelipelimao/bank/internal/entities"
 	_ "github.com/go-sql-driver/mysql"
-
-	"github.com/ffelipelimao/bank/entities"
 )
 
 type TransferRepository struct {
