@@ -1,0 +1,24 @@
+version: "3.5"
+networks:
+    default:
+        driver: bridge
+        name: rinha-nginx-2024q1
+
+services:           
+    db:
+        image: mysql:latest
+        hostname: db
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: bank
+            MYSQL_USER: user
+            MYSQL_PASSWORD: 123
+        ports:
+            - "3306:3306"
+        deploy:
+            resources:
+                limits:
+                    cpus: "0.8"
+                    memory: "300MB"
+        volumes:
+            - ./docker/script:/docker-entrypoint-initdb.d
