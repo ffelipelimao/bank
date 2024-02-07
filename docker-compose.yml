@@ -5,43 +5,45 @@ networks:
         name: rinha-nginx-2024q1
 
 services:
-#    api01: &api
-#        hostname: api01
-#        image: ffelipelimao/bank:latest
-#        volumes:
-#            - .:/app
-#        env_file:
-#            - .env
-#        ports:
-#            - "3001:3000"
-#        depends_on:
-#            - db
-#        deploy:
-#            resources:
-#                limits:
-#                    cpus: "0.55"
-#                    memory: "200MB"
+    api01: &api
+        hostname: api01
+        image: ffelipelimao/bank:3.0
+        environment:
+            - DB_HOST=db
+            - DB_USER=user
+            - DB_PASS=123
+            - DB_NAME=bank
+            - DB_PORT=3306
+        ports:
+            - "3001:3000"
+        depends_on:
+            - db
+        deploy:
+            resources:
+                limits:
+                    cpus: "0.25"
+                    memory: "100MB"
 
-#    api02:
-#        <<: *api
-#        hostname: api02
-#        ports:
-#            - "3002:3000"
-#    nginx:
-#        image: nginx:latest
-#        volumes:
-#            - ./config/nginx.conf:/etc/nginx/nginx.conf:ro
-#        depends_on:
-#            - api01
-#            - api02
-#        ports:
-#            - "9999:9999"
-#        deploy:
-#            resources:
-#                limits:
-#                    cpus: "0.1"
-#                    memory: "30MB"
-#
+    api02:
+        <<: *api
+        hostname: api02
+        ports:
+            - "3002:3000"
+    nginx:
+        image: nginx:latest
+        volumes:
+            - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+        depends_on:
+            - api01
+            - api02
+        ports:
+            - "9999:9999"
+        deploy:
+            resources:
+                limits:
+                    cpus: "0.2"
+                    memory: "50MB"
+                    
     db:
         image: mysql:latest
         hostname: db
@@ -55,8 +57,7 @@ services:
         deploy:
             resources:
                 limits:
-                    cpus: "0.7"
-                    memory: "0.8GB"
+                    cpus: "0.8"
+                    memory: "300MB"
         volumes:
             - ./docker/script:/docker-entrypoint-initdb.d
-
