@@ -12,5 +12,5 @@ type Extract struct {
 type BalanceExtract struct {
 	Limit int64     `json:"limite"`
 	Date  time.Time `json:"data_extrato"`
-	Value int64     `json:"saldo"`
+	Value int64     `json:"total"`
 }
