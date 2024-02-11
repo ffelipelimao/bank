@@ -20,14 +20,14 @@ func (u *UnitOfWork) Begin() (*Transaction, error) {
 	return &Transaction{Tx: tx}, nil
 }
 
-type SQLTransaction struct {
+type Transaction struct {
 	Tx *sql.Tx
 }
 
-func (t *SQLTransaction) Commit() error {
+func (t *Transaction) Commit() error {
 	return t.Tx.Commit()
 }
 
-func (t *SQLTransaction) Rollback() error {
+func (t *Transaction) Rollback() error {
 	return t.Tx.Rollback()
 }

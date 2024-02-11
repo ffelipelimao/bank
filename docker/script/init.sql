@@ -13,6 +13,8 @@ CREATE TABLE transacoes (
     realizada_em TIMESTAMP NOT NULL
 );
 
+ALTER TABLE transacoes ADD INDEX ix_cliente_id (cliente_id);
+
 INSERT INTO cliente_saldo (saldo, limite)
 VALUES
     (0, 1000 * 100),

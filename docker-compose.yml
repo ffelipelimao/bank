@@ -7,7 +7,7 @@ networks:
 services:
     api01: &api
         hostname: api01
-        image: ffelipelimao/bank:3.0
+        image: ffelipelimao/bank:8.1
         environment:
             - DB_HOST=db
             - DB_USER=user
@@ -21,8 +21,8 @@ services:
         deploy:
             resources:
                 limits:
-                    cpus: "0.25"
-                    memory: "100MB"
+                    cpus: "0.37"
+                    memory: "50MB"
 
     api02:
         <<: *api
@@ -57,7 +57,7 @@ services:
         deploy:
             resources:
                 limits:
-                    cpus: "0.8"
-                    memory: "300MB"
+                    cpus: "0.56"
+                    memory: "400MB"
         volumes:
             - ./docker/script:/docker-entrypoint-initdb.d

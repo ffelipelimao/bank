@@ -20,7 +20,7 @@ type Transfer struct {
 }
 
 func (t *Transfer) Validate() error {
-	if t.Value < 0 {
+	if t.Value <= 0 {
 		return ErrInvalidValue
 	}
 
@@ -28,7 +28,7 @@ func (t *Transfer) Validate() error {
 		return ErrInvalidType
 	}
 
-	if len(t.Description) > 10 {
+	if len(t.Description) > 10 || len(t.Description) < 1 {
 		return ErrInvalidDescription
 	}
 
