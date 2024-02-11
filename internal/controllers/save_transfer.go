@@ -11,9 +11,9 @@ import (
 )
 
 var statusCodeErrHandle = map[error]int{
-	entities.ErrInvalidDescription: http.StatusBadRequest,
-	entities.ErrInvalidType:        http.StatusBadRequest,
-	entities.ErrInvalidValue:       http.StatusBadRequest,
+	entities.ErrInvalidDescription: http.StatusUnprocessableEntity,
+	entities.ErrInvalidType:        http.StatusUnprocessableEntity,
+	entities.ErrInvalidValue:       http.StatusUnprocessableEntity,
 	usecases.ErrInsufficientFunds:  http.StatusUnprocessableEntity,
 }
 
@@ -37,8 +37,8 @@ func (stc *SaveTransferController) Handle(c *fiber.Ctx) error {
 	var transfer entities.Transfer
 
 	if err := c.BodyParser(&transfer); err != nil {
-		return c.Status(http.StatusBadRequest).JSON(fiber.Map{
-			"code":    http.StatusBadRequest,
+		return c.Status(http.StatusUnprocessableEntity).JSON(fiber.Map{
+			"code":    http.StatusUnprocessableEntity,
 			"message": "invalid transfer body",
 		})
 	}
