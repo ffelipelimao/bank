@@ -7,7 +7,7 @@ networks:
 services:
     api01: &api
         hostname: api01
-        image: ffelipelimao/bank:8.1
+        image: ffelipelimao/bank:9.15
         environment:
             - DB_HOST=db
             - DB_USER=user

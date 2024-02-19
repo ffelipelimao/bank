@@ -27,7 +27,7 @@ func (tr *TransferRepository) Save(ctx context.Context, tx *uow.Transaction, tra
 }
 
 func (r *TransferRepository) List(ctx context.Context, tx *uow.Transaction, userID int64) ([]*entities.Transfer, error) {
-	rows, err := tx.Tx.QueryContext(ctx, "SELECT valor, tipo, descricao, realizada_em FROM transacoes WHERE cliente_id = ? LIMIT 10", userID)
+	rows, err := tx.Tx.QueryContext(ctx, "SELECT valor, tipo, descricao, realizada_em FROM transacoes WHERE cliente_id = ? ORDER BY realizada_em DESC LIMIT 10", userID)
 	if err != nil {
 		return nil, err
 	}
